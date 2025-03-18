@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body{
+      background-image:url('12.PNG') ;
+      
+      background-repeat: no-repeat;
+background-size: cover;
+background-attachment:fixed;
+    }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+
+    .calculator {
+      width: 300px;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      justify-content: center;
+align-items: center;
+    }
+
+    #display {
+      width: 100%;
+      height: 60px;
+      background: #222;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      text-align: right;
+      padding-right: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      width: 100%;
+      height: 60px;
+      font-size: 24px;
+      color: #fff;
+      background-color: #444;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #555;
+      border-radius: 20px;
+      box-shadow: 0px 0px 60px cyan;
+      font-family: monospace;
+    }
+
+    button:active {
+      background-color: #666;
+    }
+
+    button:nth-child(4n) {
+      background-color: #f39c12;
+    }
+
+    button:nth-child(4n):hover {
+      background-color: #e67e22;
+    }
+    .temu{
+      border: 2px solid ;
+      width:400px ;
+      height: 500px;
+box-shadow: 5px 5px 50px black;
+width: 100vh;
+min-height: 90vh;
+justify-content: center;
+align-items: center;
+background-color: rgba(0, 0, 0, 0.4);
+    }
+    .temu2{ position: relative;
+      right: -140px;
+      bottom: 5px;
+      align-items: center;
+      justify-content: center;
+    }
+    .temu3{
+      font-family: cursive;
+      text-shadow: 0px 0px 10px ;
+      position: relative;
+      left: 70px ;
+      top: 30px;
+      cursor: pointer;
+      font-size: 30px;
+      z-index: 1;
+    }
+    .temu3:hover{
+      
+      
+    }
+    .temu4{
+      font-family: sans-serif;
+      border-radius: 50px;
+      font-size: 20px;
+      background-color: skyblue;
+      transition: 1s;
+      box-shadow: 0px 0px 20px;
+    }
+  </style>
+</head>
+<body>
+<section class="temu"> 
+
+<h1 class="temu3">&#128526 temu</h1>
+  <section class="temu2">
+  <div class="calculator">
+    <input type="text" id="display" disabled />
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="deleteLast()">DEL</button>
+      <button onclick="appendOperator('/')">÷</button>
+      <button onclick="appendOperator('*')">×</button>
+      
+      <button onclick="appendNumber(7)">7</button>
+      <button onclick="appendNumber(8)">8</button>
+      <button onclick="appendNumber(9)">9</button>
+      <button onclick="appendOperator('-')">-</button>
+      
+      <button onclick="appendNumber(4)">4</button>
+      <button onclick="appendNumber(5)">5</button>
+      <button onclick="appendNumber(6)">6</button>
+      <button onclick="appendOperator('+')">+</button>
+      
+      <button onclick="appendNumber(1)">1</button>
+      <button onclick="appendNumber(2)">2</button>
+      <button onclick="appendNumber(3)">3</button>
+      <button onclick="calculate()">=</button>
+      
+      <button onclick="appendNumber(0)">0</button>
+      <button onclick="appendDecimal()">.</button>
+      <button class="temu4" onclick="appendNumber(0)">temu</button>
+    </div>
+  </div>
+
+  </section>
+  <marquee bgcolor="cyan"> what's app everyone this is the simple calculetor  
+
+   developed by 'TEMU' </marquee>
+</section>
+  <script>
+    let display = document.getElementById("display");
+
+    function clearDisplay() {
+      display.value = "";
+    }
+
+    function deleteLast() {
+      display.value = display.value.slice(0, -1);
+    }
+
+    function appendNumber(number) {
+      display.value += number;
+    }
+
+    function appendOperator(operator) {
+      if (display.value && !isNaN(display.value.slice(-1))) {
+        display.value += operator;
+      }
+    }
+
+    function appendDecimal() {
+      if (!display.value.includes('.') || isNaN(display.value.slice(-1))) {
+        display.value += '.';
+      }
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch (error) {
+        display.value = "error temu😎";
+      }
+    }
+  </script>
+
+</body>
+</html>
